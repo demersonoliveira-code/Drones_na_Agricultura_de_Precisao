@@ -1,21 +1,239 @@
-MIT License
+/* --- CONFIGURAÇÕES GERAIS --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    scroll-behavior: smooth;
+}
 
-Copyright (c) 2026 demersonoliveira-code
+body {
+    background-color: #fcfcfc;
+    color: #333;
+    line-height: 1.6;
+}
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+/* --- CABEÇALHO FIXO --- */
+.header {
+    background-color: #1b4d3e; /* Verde escuro Agro */
+    color: #fff;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.logo h1 {
+    font-size: 1.5rem;
+}
+
+.logo h1 span {
+    color: #8bd8bd; /* Verde claro destacado */
+    font-size: 0.9rem;
+    display: block;
+    font-weight: normal;
+}
+
+/* --- MENU NAVEGAÇÃO (DESKTOP) --- */
+.nav-menu ul {
+    display: flex;
+    list-style: none;
+}
+
+.nav-menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-menu ul li a:hover, 
+.nav-menu ul li a.active {
+    color: #8bd8bd;
+}
+
+/* --- MENU HAMBÚRGUER (MOBILE) --- */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+.hamburger .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: #fff;
+    transition: all 0.3s ease-in-out;
+}
+
+/* --- BANNER PRINCIPAL (HERO) --- */
+.hero {
+    background: linear-gradient(rgba(27, 77, 62, 0.8), rgba(27, 77, 62, 0.9)), url('https://picsum.photos/1200/500') no-repeat center center/cover;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    color: white;
+    text-align: center;
+    margin-top: 70px; /* Evita ficar por baixo do header fixo */
+}
+
+.hero-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.hero-text p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* --- SEÇÕES E GRIDS --- */
+.section {
+    padding: 60px 0;
+}
+
+.bg-light {
+    background-color: #f4f7f6;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #1b4d3e;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: #8bd8bd;
+    margin: 10px auto 0;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(45%, 1fr));
+    gap: 30px;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+    gap: 20px;
+}
+
+.card, .card-state {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border-top: 4px solid #1b4d3e;
+}
+
+.card h3, .card-state h4 {
+    color: #1b4d3e;
+    margin-bottom: 15px;
+}
+
+/* Caixa em Destaque (Regulamento) */
+.highlight-box {
+    background-color: #eef7f4;
+    border-left: 6px solid #1b4d3e;
+    padding: 30px;
+    border-radius: 4px;
+}
+
+.highlight-box h3 {
+    color: #1b4d3e;
+    margin-bottom: 15px;
+}
+
+.highlight-box ul {
+    margin-top: 15px;
+    padding-left: 20px;
+}
+
+.highlight-box ul li {
+    margin-bottom: 10px;
+}
+
+/* --- RODAPÉ --- */
+.footer {
+    background-color: #113328;
+    color: #a3c1ad;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9rem;
+}
+
+/* --- RESPONSIVIDADE (MOBILE) --- */
+@media(max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+
+    /* Transforma o menu em uma gaveta lateral ou superior */
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 74px;
+        gap: 0;
+        flex-direction: column;
+        background-color: #1b4d3e;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        padding: 20px 0;
+    }
+
+    .nav-menu ul li {
+        margin: 15px 0;
+    }
+
+    /* Quando a classe 'active' for injetada pelo JS */
+    .nav-menu.active {
+        left: 0;
+    }
+
+    /* Animação do ícone Hambúrguer para um 'X' */
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .hero-text h2 {
+        font-size: 1.8rem;
+    }
+}
